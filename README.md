@@ -3,8 +3,8 @@
 ## Table of Contents
 1. [How to write References](#htwr)
   * [Specifying object variables in a sentence](#sovms)
-  * [How to write a code block]("#htwacb")
-  * [Important information should be bolded]("#iisbb")
+  * [How to write a code block](#htwacb)
+  * [Important information should be bolded](#iisbb)
 
 <a name="htwr"></a>
 ## How to write References
