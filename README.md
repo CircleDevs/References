@@ -13,7 +13,7 @@
 ### Specifying object variables in a sentence
 This is how it's supposed to look like when you are writting an `Object` mid-sentence
 
-<a name"htwacb"></a>
+<a name="htwacb"></a>
 ### How to write a code block
 ```
 val obj1 = Object()
