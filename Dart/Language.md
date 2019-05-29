@@ -231,6 +231,38 @@ await for (varOrType identifier in expression) {
     // Executes each time the stream emits a value
 }
 ```
+There are two kinds of Streams <br>
+**Single subscription streams**
+* Events need to be delivered in the corret order and without missing any of them. This is the kind of stream you get when you read a file or receive a web request.
+* Whne you start listening, the data will be fetched and provided in chunks
+
+**Broadcast Streams**
+* For individual messages that can be handled one at a time. 
+* Can begin to listen to the event at any time and the events are receives as they are fired.
+* More than one listener can listen at the same time and you can listen again later after canelling a previous subscription.
+
+Combining Futures and Streams
+```
+Future<int> sumStream(Stream<int> stream) async {
+    var sum = 0;
+    await for (var value in stream) {
+        sum += value;
+    }
+    return sum;
+}
+
+Stream<int> countStream(int to) async* {
+    for (int i = 1; i <= to; i++) {
+        yield i;
+    }
+}
+
+main() async {
+    var stream = countStream(10);
+    var sum = await sumStream(stream);
+    print(sum);
+}
+```
 
 ## Generators
 When you need to lazily produce a sequence of values, consider using a generator function. Dart has built-in support for two kinds of generator functions:

@@ -54,6 +54,80 @@ class SampleAppPage extends StatefulWidget {
 }
 ```
 
+Example of adding padding to a simple Text widget
+```
+@override
+Widget build(BuildContext context)  => Scaffold(
+    appBar: AppBar(
+        title: Text("Sample App"),
+    ),
+    body: Center (
+        child: MaterialButton(
+            onPressed: () {},
+            child: Text('Hello'),
+            padding: EdgeInsets.only(left: 10.0, right: 10.0),
+        ),
+    ),
+);
+```
+Add and removing Components
+```
+import 'package:flutter/material.dart';
+
+/// The entry point of the application
+void main() => runApp(FlutterLearn());
+
+class FlutterLearn extends StatelessWidget {
+    @override
+    Widget build(BuildContext context) { 
+        final toggler = Toggler();
+
+        return MaterialApp(
+            title: "Learning Flutter",
+            theme: ThemeData(primarySwatch: Colors.red),
+            home: Scaffold(
+                appBar: AppBar(
+                    title: Text("Learn Flutter"),
+                ),
+                body: Center(child: toggler),
+                floatingActionButton: FloatingActionButton(
+                    onPressed: () { toggler.toggerState.doToggle(); },
+                    tooltip: 'Update Text',
+                    child: Icon(Icons.update),
+                )
+            )
+        );
+    }
+}
+
+class Toggler extends StatefulWidget {
+    final togglerState = _TogglerState();
+
+    @override
+    State createState() => toggerState;
+}
+
+class _TogglerState extends State<Toggler> {
+    bool toggle = true;
+
+    void doToggle() {
+        setState( () {
+            toggle = !toggle;
+        });
+    }
+
+    Widget _getToggleChild() {
+        if(toggle) {
+            return Text('Toggle One');
+        } else {
+            return MaterialButton(onPressed: () {}, child: Text('Toggle Two'));
+        }
+    }
+
+    @override
+    Widget build(BuildContext context) => _getToggleChild();
+}
+```
 View
 - Views are directly updated by mutating their state
 - 
